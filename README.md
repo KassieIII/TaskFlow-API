@@ -1,5 +1,10 @@
 # ✅ TaskFlow API
 
+![CI](https://github.com/KassieIII/taskflow-api/actions/workflows/ci.yml/badge.svg)
+![Python](https://img.shields.io/badge/python-3.11+-blue)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.111-009688)
+![License](https://img.shields.io/badge/license-MIT-green)
+
 A clean REST API for task and project management built with FastAPI. Features JWT authentication, role-based access, and real-time status tracking.
 
 ## Features
@@ -22,6 +27,16 @@ A clean REST API for task and project management built with FastAPI. Features JW
 - JWT (python-jose)
 
 ## Quick Start
+
+### With Docker (recommended)
+
+```bash
+docker-compose up --build
+```
+
+API runs at `http://localhost:8000`. Migrations run automatically.
+
+### Local development
 
 ```bash
 # Clone
