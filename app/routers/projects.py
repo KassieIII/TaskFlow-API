@@ -19,7 +19,7 @@ async def list_projects(
 ):
     result = await db.execute(
         select(Project)
-        .where(Project.owner_id == current_user.id, Project.is_archived == False)
+        .where(Project.owner_id == current_user.id, Project.is_archived.is_(False))
         .order_by(Project.updated_at.desc())
     )
     projects = result.scalars().all()
