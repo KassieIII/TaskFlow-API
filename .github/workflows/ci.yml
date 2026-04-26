@@ -10,21 +10,6 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
-    services:
-      postgres:
-        image: postgres:16
-        env:
-          POSTGRES_USER: taskflow
-          POSTGRES_PASSWORD: taskflow
-          POSTGRES_DB: taskflow_test
-        ports:
-          - 5432:5432
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-
     steps:
       - uses: actions/checkout@v4
 
@@ -39,16 +24,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run migrations
-        env:
-          DATABASE_URL: postgresql+asyncpg://taskflow:taskflow@localhost:5432/taskflow_test
-        run: alembic upgrade head
-
       - name: Run tests
         env:
           DATABASE_URL: postgresql+asyncpg://taskflow:taskflow@localhost:5432/taskflow_test
           SECRET_KEY: test-secret
-        run: pytest -v || true
+        run: pytest -v
 
   lint:
     runs-on: ubuntu-latest
