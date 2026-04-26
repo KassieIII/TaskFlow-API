@@ -1,10 +1,14 @@
 from datetime import datetime
 from enum import Enum as PyEnum
+from typing import TYPE_CHECKING
 
-from sqlalchemy import String, DateTime, ForeignKey, Text, Integer, Enum, func
+from sqlalchemy import String, DateTime, ForeignKey, Text, Enum, func
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.database import Base
+
+if TYPE_CHECKING:
+    from app.models.project import Project
 
 
 class TaskStatus(str, PyEnum):
