@@ -25,3 +25,8 @@ app.include_router(tasks.router, prefix="/api/v1", tags=["tasks"])
 @app.get("/health")
 async def health_check():
     return {"status": "ok"}
+
+
+@app.get("/healthz", include_in_schema=False)
+async def healthz():
+    return await health_check()

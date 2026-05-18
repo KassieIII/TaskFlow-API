@@ -58,6 +58,11 @@ uvicorn app.main:app --reload
 
 API docs available at `http://localhost:8000/docs`
 
+Health checks:
+
+- `GET /health` — application liveness for humans and dashboards
+- `GET /healthz` — lightweight liveness alias for containers and probes
+
 ## Environment Variables
 
 | Variable | Description |
